@@ -25,7 +25,7 @@
   "efforts": [
     {
       "id": "1",
-      "name": "effort 1",
+      "name": "Nice Effort",
       "description": "A Description",
       "location_id": 1,
       "persons": [
@@ -47,7 +47,9 @@
     },
     {
       "name": "San Francisco, CA",
-      "id": 2
+      "id": "2",
+      "lat": "1",
+      "long": "2"
     }
   ]
 }
