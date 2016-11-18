@@ -24,23 +24,6 @@ const PersonForm = React.createClass({
       this.setState({person})
     }
   },
-  handleSubmit (e) {
-    e.preventDefault()
-
-    let person = this.state.person
-
-    const onResult = (e,r) => {
-      if (e) return console.log(e.message)
-      this.setState({success: true})
-    }
-
-    if (!person.id) {
-      this.props.post(person, onResult)
-    } else {
-      this.props.put(person.id, person, onResult)
-    }
-
-  },
   render() {
     const labelStyle = {display: 'block'}
     const person = this.state.person || {}
@@ -48,7 +31,7 @@ const PersonForm = React.createClass({
       <div>
         { this.state.success ? <Redirect to="/persons" /> : null }
         <h3>Person Form</h3>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <legend>Person Name</legend>
           <div>
             <label style={labelStyle}>First Name</label>
