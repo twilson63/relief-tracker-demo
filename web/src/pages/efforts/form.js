@@ -1,29 +1,21 @@
 const React = require('react')
 const {Link, Redirect} = require('react-router')
 
-const xhr = require('xhr')
+const Service = require('../../components/service')
+const ModelSelectBase = require('../../components/model-select')
+
+const ModelSelect = Service(ModelSelectBase, 'locations')
+
+
 
 const EffortForm = React.createClass({
   getInitialState: function() {
     return {
       success: false,
-      effort: {},
-      locations: [{id: "-1", name: "Choose"}]
+      effort: {}
     };
   },
   componentDidMount() {
-    xhr.get(process.env.REACT_APP_API + '/locations',
-    {
-      json: true,
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('id_token')}`
-      }
-    }
-    , (e,r,b) => {
-      if (e) return console.log(e.message)
-      this.setState({locations: [].concat(this.state.locations, b) })
-    })
-
     if (this.props.params.id) {
       this.props.get(this.props.params.id, (err, effort) => {
         if (err) return console.log(err.message)
@@ -60,8 +52,6 @@ const EffortForm = React.createClass({
     const labelStyle = {display: 'block'}
     const effort = this.state.effort || {}
 
-    const option = location => <option value={location.id}>{location.name}</option>
-
     return (
       <div>
         { this.state.success ? <Redirect to="/efforts" /> : null }
@@ -79,14 +69,12 @@ const EffortForm = React.createClass({
               value={this.state.effort.description}
               onChange={this.handleChange('description')} />
           </div>
-          <div>
-            <label style={labelStyle}>Location</label>
-            <select
-              value={this.state.effort.location_id}
-              onChange={this.handleChange('location_id')}>
-              {this.state.locations.map(option)}
-            </select>
-          </div>
+          <ModelSelect
+            label="Locations"
+            value={this.state.effort.location_id}
+            onChange={this.handleChange('location_id')}
+          />
+
           <div>
             <button>Submit</button>
           </div>
