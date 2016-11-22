@@ -36,6 +36,11 @@
       "name": "New Effort",
       "description": "Description",
       "id": "S1Ce0J2Ze"
+    },
+    {
+      "name": "Foo Effort",
+      "id": "ry3-4AZfg",
+      "location_id": "2"
     }
   ],
   "locations": [
@@ -50,6 +55,12 @@
       "id": "2",
       "lat": "1",
       "long": "2"
+    },
+    {
+      "name": "Foo",
+      "lat": "32",
+      "long": "12",
+      "id": "B1J-V0-Gl"
     }
   ]
 }
