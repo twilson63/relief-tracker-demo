@@ -2,11 +2,10 @@ const React = require('react')
 const {Link, Redirect} = require('react-router')
 
 const Service = require('../../components/service')
-const ModelSelectBase = require('../../components/model-select')
+const ModelSelect = require('../../components/model-select')
+const LocationSelect = Service(ModelSelect, 'locations')
 
-const ModelSelect = Service(ModelSelectBase, 'locations')
-
-
+const TextField = require('../../components/text-field')
 
 const EffortForm = React.createClass({
   getInitialState: function() {
@@ -17,7 +16,7 @@ const EffortForm = React.createClass({
   },
   componentDidMount() {
     if (this.props.params.id) {
-      this.props.get(this.props.params.id, (err, effort) => {
+      this.props.get('efforts', this.props.params.id, (err, effort) => {
         if (err) return console.log(err.message)
         this.setState({effort})
       })
@@ -41,9 +40,9 @@ const EffortForm = React.createClass({
     }
 
     if (!effort.id) {
-      this.props.post(effort, onResult)
+      this.props.post('efforts', effort, onResult)
     } else {
-      this.props.put(effort.id, effort, onResult)
+      this.props.put('efforts', effort.id, effort, onResult)
     }
 
   },
@@ -57,19 +56,15 @@ const EffortForm = React.createClass({
         { this.state.success ? <Redirect to="/efforts" /> : null }
         <h3>Effort Form</h3>
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <label style={labelStyle}>Name</label>
-            <input type="text"
-              value={this.state.effort.name}
-              onChange={this.handleChange('name')} />
-          </div>
-          <div>
-            <label style={labelStyle}>Description</label>
-            <input type="text"
-              value={this.state.effort.description}
-              onChange={this.handleChange('description')} />
-          </div>
-          <ModelSelect
+          <TextField label="Name"
+            value={this.state.effort.name}
+            onChange={this.handleChange('name')}
+          />
+          <TextField label="Description"
+            value={this.state.effort.description}
+            onChange={this.handleChange('description')}
+          />
+          <LocationSelect
             label="Locations"
             value={this.state.effort.location_id}
             onChange={this.handleChange('location_id')}

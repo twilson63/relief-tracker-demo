@@ -2,13 +2,13 @@ const React = require('react')
 const xhr = require('xhr')
 const url = process.env.REACT_APP_API
 
-const Service = (Component, model) => React.createClass({
+const Service = (Component) => React.createClass({
   getHeaders () {
     return {
       authorization: `Bearer ${localStorage.getItem('id_token')}`
     }
   },
-  allDocs (callback) {
+  allDocs (model, callback) {
     xhr.get(`${url}/${model}`, {
       headers: this.getHeaders(),
       json: true
@@ -16,7 +16,7 @@ const Service = (Component, model) => React.createClass({
       callback(e, b)
     })
   },
-  get (id, callback) {
+  get (model, id, callback) {
     xhr.get(`${url}/${model}/${id}`, {
       headers: this.getHeaders(),
       json: true
@@ -24,22 +24,22 @@ const Service = (Component, model) => React.createClass({
       callback(e, b)
     })
   },
-  post (doc, callback) {
+  post (model, doc, callback) {
     xhr.post(`${url}/${model}`, { headers: this.getHeaders(), json: doc}, (e, r, b)  => {
       callback(e, b)
     })
   },
-  put (id, doc, callback) {
+  put (model, id, doc, callback) {
     xhr.put(`${url}/${model}/${id}`, {headers: this.getHeaders(), json: doc}, (e, r, b)  => {
       callback(e, b)
     })
   },
-  query(criteria, callback) {
+  query(model, criteria, callback) {
     xhr.get(`${url}/${model}?${criteria}`, {headers: this.getHeaders(), json: true}, (e, r, b) => {
       callback(e, b)
     })
   },
-  remove (doc, callback) {
+  remove (model, doc, callback) {
     xhr.delete(`${url}/${model}\${doc._id}`, {headers: this.getHeaders(), json: doc}, (e,r,b) => callback(e,b))
   },
   render() {

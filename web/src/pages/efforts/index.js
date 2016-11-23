@@ -10,7 +10,7 @@ const Efforts = React.createClass({
     }
   },
   componentDidMount() {
-    this.props.allDocs((e, efforts) => {
+    this.props.allDocs('efforts',(e, efforts) => {
       if (e) return console.log(e.message)
       this.setState({efforts})
     })

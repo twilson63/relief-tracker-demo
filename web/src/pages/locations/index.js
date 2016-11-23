@@ -10,7 +10,7 @@ const Locations = React.createClass({
     }
   },
   componentDidMount() {
-    this.props.allDocs((e, locations) => {
+    this.props.allDocs('locations', (e, locations) => {
       if (e) return console.log(e.message)
       this.setState({locations})
     })

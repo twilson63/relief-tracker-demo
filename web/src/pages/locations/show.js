@@ -13,7 +13,7 @@ const Location = React.createClass({
     };
   },
   componentDidMount() {
-    this.props.get(this.props.params.id, (err, location) => {
+    this.props.get('locations', this.props.params.id, (err, location) => {
       if (err) return console.log(err.message)
       this.setState({location})
     })

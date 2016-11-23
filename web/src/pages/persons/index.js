@@ -10,7 +10,7 @@ const Persons = React.createClass({
     }
   },
   componentDidMount() {
-    this.props.allDocs((e, persons) => {
+    this.props.allDocs('persons', (e, persons) => {
       if (e) return console.log(e.message)
       this.setState({persons})
     })

@@ -27,9 +27,18 @@
       "id": "1",
       "name": "Nice Effort",
       "description": "A Description",
-      "location_id": "Hy2LhRWfx",
+      "location_id": "2",
       "persons": [
         1
+      ],
+      "members": [
+        {
+          "firstName": "Trey",
+          "lastName": "Wilson",
+          "email": "trey2@gmail.com",
+          "phone": "8881234545",
+          "id": "2"
+        }
       ]
     },
     {

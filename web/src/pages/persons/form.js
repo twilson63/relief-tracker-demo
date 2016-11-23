@@ -11,7 +11,7 @@ const PersonForm = React.createClass({
   },
   componentDidMount() {
     if (this.props.params.id) {
-      this.props.get(this.props.params.id, (err, person) => {
+      this.props.get('persons', this.props.params.id, (err, person) => {
         if (err) return console.log(err.message)
         this.setState({person})
       })

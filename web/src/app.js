@@ -19,20 +19,20 @@ const App = React.createClass({
         <div>
           <Match exactly pattern="/" component={Auth(Home)} />
 
-          <Match exactly pattern="/persons" component={RequireAuth(Service(Persons, 'persons'))} />
-          <Match pattern="/persons/:id/show" component={RequireAuth(Service(Person, 'persons'))} />
-          <Match pattern="/persons/new" component={RequireAuth(Service(PersonForm, 'persons'))} />
-          <Match pattern="/persons/:id/edit" component={RequireAuth(Service(PersonForm, 'persons'))} />
+          <Match exactly pattern="/persons" component={RequireAuth(Service(Persons))} />
+          <Match pattern="/persons/:id/show" component={RequireAuth(Service(Person))} />
+          <Match pattern="/persons/new" component={RequireAuth(Service(PersonForm))} />
+          <Match pattern="/persons/:id/edit" component={RequireAuth(Service(PersonForm))} />
 
-          <Match exactly pattern="/efforts" component={RequireAuth(Service(Efforts, 'efforts'))} />
-          <Match pattern="/efforts/:id/show" component={RequireAuth(Service(Effort, 'efforts'))} />
-          <Match pattern="/efforts/new" component={RequireAuth(Service(EffortForm, 'efforts'))} />
-          <Match pattern="/efforts/:id/edit" component={RequireAuth(Service(EffortForm, 'efforts'))} />
+          <Match exactly pattern="/efforts" component={RequireAuth(Service(Efforts))} />
+          <Match pattern="/efforts/:id/show" component={RequireAuth(Service(Effort))} />
+          <Match pattern="/efforts/new" component={RequireAuth(Service(EffortForm))} />
+          <Match pattern="/efforts/:id/edit" component={RequireAuth(Service(EffortForm))} />
 
-          <Match exactly pattern="/locations" component={RequireAuth(Service(Locations, 'locations'))} />
-          <Match pattern="/locations/:id/show" component={RequireAuth(Service(Location, 'locations'))} />
-          <Match pattern="/locations/new" component={RequireAuth(Service(LocationForm, 'locations'))} />
-          <Match pattern="/locations/:id/edit" component={RequireAuth(Service(LocationForm, 'locations'))} />
+          <Match exactly pattern="/locations" component={RequireAuth(Service(Locations))} />
+          <Match pattern="/locations/:id/show" component={RequireAuth(Service(Location))} />
+          <Match pattern="/locations/new" component={RequireAuth(Service(LocationForm))} />
+          <Match pattern="/locations/:id/edit" component={RequireAuth(Service(LocationForm))} />
 
           <Match pattern="/about" component={About} />
         </div>

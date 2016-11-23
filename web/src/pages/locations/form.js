@@ -10,7 +10,7 @@ const LocationForm = React.createClass({
   },
   componentDidMount() {
     if (this.props.params.id) {
-      this.props.get(this.props.params.id, (err, location) => {
+      this.props.get('locations', this.props.params.id, (err, location) => {
         if (err) return console.log(err.message)
         this.setState({location})
       })
@@ -34,9 +34,9 @@ const LocationForm = React.createClass({
     }
 
     if (!location.id) {
-      this.props.post(location, onResult)
+      this.props.post('locations', location, onResult)
     } else {
-      this.props.put(location.id, location, onResult)
+      this.props.put('locations', location.id, location, onResult)
     }
 
   },
